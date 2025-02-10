@@ -1,7 +1,7 @@
 # Amazon Review Authenticity Analysis
 
 ## Repository Overview
-Welcome to this repository! This README file serves as an orientation guide for new users, providing essential information on the project's structure, required software, and steps to reproduce results.
+Welcome to this repository! This README file serves as an orientation guide for new users, providing essential information on this project.
 
 ---
 
