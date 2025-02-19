@@ -1,0 +1,32 @@
+Chi-Square Test for AI Usage Rate
+                   AI-Generated  Human-Written
+category                                      
+Handmade Products             5             45
+Software                      7             43
+Video Games                   4             46
+Chi-Square Statistic: 0.979, p-value: 0.61279
+No significant difference in AI usage rates.
+
+------------------------------------------------
+
+One-Way ANOVA for AI Scores
+F-Statistic: 0.473, p-value: 0.62409
+No significant difference in AI scores.
+
+-------------------------------------------------
+
+T-test between Handmade Products and Software
+T-Statistic: -0.838, p-value: 0.40442
+No significant difference.
+
+--------------------------------------------------
+
+T-test between Handmade Products and Video Games
+T-Statistic: -0.040, p-value: 0.96783
+No significant difference.
+
+--------------------------------------------------
+
+T-test between Software and Video Games
+T-Statistic: 0.788, p-value: 0.43262
+No significant difference.
