@@ -17,6 +17,7 @@ This project was developed using the following software and tools:
   - [REQUESTS] - [Used for JSON accessing]
   - [MAPLOTLIB.PYPLOT] - [Used for data visualization]
   - [TIME] - [Used for time related functions]
+  - [SCIPY] - [Used for analysis of AI detection results]
  
 - **Platform Compatibility:**  
   - ✅ Windows  
