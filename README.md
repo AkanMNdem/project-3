@@ -36,8 +36,8 @@ Below is a map of the repository, illustrating the hierarchy of files and folder
 ## Section 3: Results Reproduction Instructions
 1. We first need to figure out what dataset to analyze. For our group, we decided to analyze Amazon Product Reviews and gathered this data from a GitHub Repository. This is the repository the Amazon Product Reviews came from: https://amazon-reviews-2023.github.io/
 2. We then decided how we are going to analyze this data, which we did on the basis of AI usage in reviews 
-3. We searched for AI detection software, specifically ones where we had easy access (account creation is simple) to an API to send requests on the AI detection results. This lead to us using the Sappling AI detector API: https://sapling.ai/docs/api/detector/ (see ai_detection.py)
-4. After downloading the dataset for 3 different types of products (Software, Handmade Products, and Video Games), we graphically analyzed the character count of the reviews to create lower and upper bound on the character count per review. We settled on an upper bound of 600 characters. To visualize our data, we used pandas, matplotlib, and json libraries. (see main.py)
+3. Run ai_detection.py: We searched for AI detection software, specifically ones where we had easy access (account creation is simple) to an API to send requests on the AI detection results. This lead to us using the Sappling AI detector API: https://sapling.ai/docs/api/detector/
+4. After downloading the dataset for 3 different types of products (Software, Handmade Products, and Video Games), we graphically analyzed the character count of the reviews to create lower and upper bound on the character count per review. We settled on an upper bound of 600 characters. To visualize our data, we used pandas, matplotlib, and json libraries. 
    ```python
     plt.subplot(1, 2, 1)  # 1 row, 2 columns, 1st subplot
     plt.hist(df_filtered['text_length'], bins=50, edgecolor='black')
@@ -59,7 +59,7 @@ Below is a map of the repository, illustrating the hierarchy of files and folder
     plt.tight_layout()  # Adjust layout to prevent overlap
     plt.show()
    ```
-5. We then cleaned the data to fit our data dictionary and pooled a random sample of 1000 reviews for each product set. (see data_processing.py)
+5. Run data_processing.py: We then cleaned the data to fit our data dictionary and pooled a random sample of 1000 reviews for each product set.
    ```python
     df_reviews = {category: load_and_filter_reviews(path, category) for category, path in file_paths.items()}
     df_metadata = {category: load_metadata(path) for category, path in metadata_paths.items()}
@@ -87,7 +87,7 @@ Below is a map of the repository, illustrating the hierarchy of files and folder
     # Combine all sampled data
     df_final = pd.concat(df_sampled, ignore_index=True)
    ```
-6. This random sample was sent to the Sappling AI detector using the Sappling AI detection API, but an even smaller sample from this was sent due to rate limiting by Sappling.
+6. Run main.py: This random sample was sent to the Sappling AI detector using the Sappling AI detection API, but an even smaller sample from this was sent due to rate limiting by Sappling.
     ```python
     df_sampled = df_reviews.groupby("category", group_keys=False).apply(
     lambda x: x.sample(n=min(50, len(x)), random_state=42)
@@ -119,7 +119,7 @@ Below is a map of the repository, illustrating the hierarchy of files and folder
     print("Max retries reached. Skipping this review.")
     return None
     ```
-7. After gathering the data on AI detection, we ran a one-way ANOVA test, two sample t-test (comparing each group against another), and a chi-squared test to analyze statistical significance of AI usage between groups. We used scipy and pandas for converting the data to a data frame then conducting statistical analysis. After that we visualized the results using matplotlib and seaborn. (see analysis.py)
+7. Run analysis.py: After gathering the data on AI detection, we ran a one-way ANOVA test, two sample t-test (comparing each group against another), and a chi-squared test to analyze statistical significance of AI usage between groups. We used scipy and pandas for converting the data to a data frame then conducting statistical analysis. After that we visualized the results using matplotlib and seaborn.
     ```python
     # Chi-Square Test for AI Usage Rate
     threshold = 50  # threshhol, >= 50% we'll say it's AI generated
